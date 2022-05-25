@@ -31,8 +31,11 @@ Nitsche::computeQpResidual()
 {
   ADReal value = _test[_i][_qp] * (_u[_qp] - _wn[_qp]);
 
-  ADRealVectorValue n = _grad_phi[_qp] / _grad_phi[_qp].norm();
-  value += _alpha[_qp] * (_grad_test[_i][_qp] * n) * (_grad_u[_qp] * n);
+  if (_grad_phi[_qp].norm() > 1e-6)
+  {
+    ADRealVectorValue n = _grad_phi[_qp] / _grad_phi[_qp].norm();
+    value += _alpha[_qp] * (_grad_test[_i][_qp] * n) * (_grad_u[_qp] * n);
+  }
 
   return value;
 }
