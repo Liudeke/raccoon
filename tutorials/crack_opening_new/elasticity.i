@@ -6,9 +6,11 @@ G = '${fparse E/2/(1+nu)}'
 Gc = 1
 l = 0.02
 
-e = 0.012
+e = 0.0015
 
 a = 0.8
+
+p = 1e-3
 
 [MultiApps]
   [fracture]
@@ -20,7 +22,7 @@ a = 0.8
   [levelset]
     type = FullSolveMultiApp
     input_files = levelset.i
-    cli_args = 'e=${e};a=${a}'
+    cli_args = 'e=${e}'
     execute_on = 'TIMESTEP_END'
   []
 []
@@ -50,6 +52,18 @@ a = 0.8
   [gen]
     type = FileMeshGenerator
     file = 'gold/plate_${e}.msh'
+  []
+  [corner1]
+    type = ExtraNodesetGenerator
+    input = gen
+    new_boundary = 'corner1'
+    coord = '0 0 0'
+  []
+  [corner2]
+    type = ExtraNodesetGenerator
+    input = corner1
+    new_boundary = 'corner2'
+    coord = '1 0 0'
   []
 []
 
@@ -81,22 +95,28 @@ a = 0.8
 []
 
 [BCs]
-  [ydisp]
-    type = FunctionDirichletBC
+  [traction_top]
+    type = NeumannBC
     variable = disp_y
     boundary = 'top'
-    function = 't'
+    value = ${p}
+  []
+  [traction_bottom]
+    type = NeumannBC
+    variable = disp_y
+    boundary = 'bottom'
+    value = '${fparse -p}'
   []
   [yfix]
     type = DirichletBC
     variable = disp_y
-    boundary = 'bottom'
+    boundary = 'corner1 corner2'
     value = 0
   []
   [xfix]
     type = DirichletBC
     variable = disp_x
-    boundary = 'top bottom'
+    boundary = 'corner1'
     value = 0
   []
 []

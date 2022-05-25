@@ -43,15 +43,17 @@
   []
   [phi]
   []
+  [cti]
+  []
 []
 
 [UserObjects]
   [active_domain]
     type = CoupledVarThresholdElementSubdomainModifier
     apply_initial_conditions = false
-    coupled_var = d
+    coupled_var = cti
     criterion_type = ABOVE
-    threshold = 0
+    threshold = 0.17
     subdomain_id = 1
     complement_subdomain_id = 0
     execute_on = TIMESTEP_BEGIN
