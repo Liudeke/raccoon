@@ -1,0 +1,192 @@
+<!DOCTYPE html><head><meta charset="UTF-8"><title>Step 2 Adding boundary conditions | RACCOON</title><link rel="icon" type="image/x-icon" href="../../../../media/raccoon_icon.png" sizes="16x16 32x32 64x64 128x128"></link><link href="../../../../contrib/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"></link><link href="../../../../contrib/prism/prism.min.css" type="text/css" rel="stylesheet"></link><link href="../../../../css/moose.css" type="text/css" rel="stylesheet"></link><link href="../../../../css/devel_moose.css" type="text/css" rel="stylesheet"></link><link href="../../../../css/alert_moose.css" type="text/css" rel="stylesheet"></link><link href="../../../../css/content_moose.css" type="text/css" rel="stylesheet"></link><link href="../../../../css/sqa_moose.css" type="text/css" rel="stylesheet"></link><link href="../../../../css/civet_moose.css" type="text/css" rel="stylesheet"></link><script type="text/javascript" src="../../../../contrib/jquery/jquery.min.js"></script></head><body><div class="page-wrap"><header><nav><div class="nav-wrapper container"><a href="../../../../index.html" class="left moose-logo hide-on-med-and-down" id="home-button">RACCOON</a><a href="https://github.com/hugary1995/raccoon" class="right"><img src="../../../../media/framework/github-logo.png" class="github-mark"></img><img src="../../../../media/framework/github-mark.png" class="github-logo"></img></a><ul class="right hide-on-med-and-down"><li><a href="#!" class="dropdown-trigger" data-target="e54110f9-7fc2-447d-ab73-f7b549027cad" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="ede219d7-29cf-4269-a5ba-0576fe4b1da9" data-constrainWidth="false">Tutorials<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="fdfb1bcf-96b9-4f3a-a976-f96ff7e0b09c" data-constrainWidth="false">Theory<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="0a774086-894b-411b-be6a-07a0c02105a9" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../../../contribute/index.html">Contribute</a></li></ul><a href="#" class="sidenav-trigger" data-target="d6083d9f-a1ed-4ac4-bdbd-1a94f9e6a5ac"><i class="material-icons">menu</i></a><ul class="sidenav" id="d6083d9f-a1ed-4ac4-bdbd-1a94f9e6a5ac"><li><a href="#!" class="dropdown-trigger" data-target="614df5ef-2a4b-4638-bedf-9e3218d78443" data-constrainWidth="false">Getting Started<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="bb7a3e12-a1a3-4a8b-86e3-9554b88ff2ce" data-constrainWidth="false">Tutorials<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="9fbe26b7-bbc9-48bc-b1ee-cbd264aa6fa9" data-constrainWidth="false">Theory<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="#!" class="dropdown-trigger" data-target="325aab34-9030-4c1e-81a5-5963782f133c" data-constrainWidth="false">Documentation<i class="material-icons right">arrow_drop_down</i></a></li><li><a href="../../../../contribute/index.html">Contribute</a></li></ul><a href="#moose-search" class="modal-trigger"><i class="material-icons">search</i></a></div><ul class="dropdown-content" id="e54110f9-7fc2-447d-ab73-f7b549027cad"><li><a href="../../../../getting_started/install.html">Install RACCOON</a></li><li><a href="../../../../getting_started/update.html">Update RACCOON</a></li><li><a href="../../../../getting_started/running.html">Running your first model</a></li><li><a href="../../../../getting_started/paraview.html">Visualization</a></li><li><a href="../../../../getting_started/ide.html">Code development</a></li><li><a href="../../../../getting_started/docs.html">Browse the documentation locally</a></li></ul><ul class="dropdown-content" id="ede219d7-29cf-4269-a5ba-0576fe4b1da9"><li><a href="../../../../tutorials/01_small_deformation_elasticity.html">1. Small deformation</a></li><li><a href="../../../../tutorials/02_mode1_brittle_fracture.html">2. Mode-I fracture</a></li><li><a href="../../../../tutorials/03_mode2_brittle_fracture.html">3. Mode-II fracture</a></li><li><a href="../../../../tutorials/04_fiber_reinforced_matrix.html">4. Fiber-reinforced matrix</a></li><li><a href="../../../../tutorials/05_soil_desiccation.html">5. Soil desiccation</a></li><li><a href="../../../../tutorials/06_large_deformation_elasticity.html">6. Large deformation</a></li><li><a href="../../../../tutorials/07_elastoplasticity.html">7. Elastoplasticity</a></li><li><a href="../../../../tutorials/08_ductile_fracture.html">8. Ductile fracture</a></li><li><a href="../../../../tutorials/09_three_point_bending.html">9. Three-point bending</a></li><li><a href="../../../../tutorials/10_quenching_bibeam.html">10. Quenching of bi-beam</a></li><li><a href="../../../../tutorials/11_adaptivity.html">11. Adaptive mesh refinement</a></li><li><a href="../../../../tutorials/12_nucleation.html">12. Crack nucleation</a></li><li><a href="../../../../tutorials/13_traction_separation.html">13. Traction separation law</a></li></ul><ul class="dropdown-content" id="fdfb1bcf-96b9-4f3a-a976-f96ff7e0b09c"><li><a href="../../../../theory/intro.html">Introduction</a></li><li><a href="../../../../theory/kinematics.html">State variables and kinematics</a></li><li><a href="../../../../theory/thermodynamics.html">Thermodynamics</a></li><li><a href="../../../../theory/minimization.html">The minimization problem</a></li><li><a href="../../../../theory/constitutive_models.html">Constitutive Models</a></li></ul><ul class="dropdown-content" id="0a774086-894b-411b-be6a-07a0c02105a9"><li><a href="../../../index.html">Physics modules</a></li><li><a href="../../../../syntax/index.html">Complete syntax</a></li><li><a href="../../../../syntax/raccoon.html">RACCOON syntax</a></li><li><a href="../../../../syntax/tensor_mechanics.html">Tensor mechanics syntax</a></li><li><a href="../../../../syntax/phase_field.html">Phase field syntax</a></li><li><a href="../../../../syntax/heat_conduction.html">Heat conduction syntax</a></li></ul><ul class="dropdown-content" id="614df5ef-2a4b-4638-bedf-9e3218d78443"><li><a href="../../../../getting_started/install.html">Install RACCOON</a></li><li><a href="../../../../getting_started/update.html">Update RACCOON</a></li><li><a href="../../../../getting_started/running.html">Running your first model</a></li><li><a href="../../../../getting_started/paraview.html">Visualization</a></li><li><a href="../../../../getting_started/ide.html">Code development</a></li><li><a href="../../../../getting_started/docs.html">Browse the documentation locally</a></li></ul><ul class="dropdown-content" id="bb7a3e12-a1a3-4a8b-86e3-9554b88ff2ce"><li><a href="../../../../tutorials/01_small_deformation_elasticity.html">1. Small deformation</a></li><li><a href="../../../../tutorials/02_mode1_brittle_fracture.html">2. Mode-I fracture</a></li><li><a href="../../../../tutorials/03_mode2_brittle_fracture.html">3. Mode-II fracture</a></li><li><a href="../../../../tutorials/04_fiber_reinforced_matrix.html">4. Fiber-reinforced matrix</a></li><li><a href="../../../../tutorials/05_soil_desiccation.html">5. Soil desiccation</a></li><li><a href="../../../../tutorials/06_large_deformation_elasticity.html">6. Large deformation</a></li><li><a href="../../../../tutorials/07_elastoplasticity.html">7. Elastoplasticity</a></li><li><a href="../../../../tutorials/08_ductile_fracture.html">8. Ductile fracture</a></li><li><a href="../../../../tutorials/09_three_point_bending.html">9. Three-point bending</a></li><li><a href="../../../../tutorials/10_quenching_bibeam.html">10. Quenching of bi-beam</a></li><li><a href="../../../../tutorials/11_adaptivity.html">11. Adaptive mesh refinement</a></li><li><a href="../../../../tutorials/12_nucleation.html">12. Crack nucleation</a></li><li><a href="../../../../tutorials/13_traction_separation.html">13. Traction separation law</a></li></ul><ul class="dropdown-content" id="9fbe26b7-bbc9-48bc-b1ee-cbd264aa6fa9"><li><a href="../../../../theory/intro.html">Introduction</a></li><li><a href="../../../../theory/kinematics.html">State variables and kinematics</a></li><li><a href="../../../../theory/thermodynamics.html">Thermodynamics</a></li><li><a href="../../../../theory/minimization.html">The minimization problem</a></li><li><a href="../../../../theory/constitutive_models.html">Constitutive Models</a></li></ul><ul class="dropdown-content" id="325aab34-9030-4c1e-81a5-5963782f133c"><li><a href="../../../index.html">Physics modules</a></li><li><a href="../../../../syntax/index.html">Complete syntax</a></li><li><a href="../../../../syntax/raccoon.html">RACCOON syntax</a></li><li><a href="../../../../syntax/tensor_mechanics.html">Tensor mechanics syntax</a></li><li><a href="../../../../syntax/phase_field.html">Phase field syntax</a></li><li><a href="../../../../syntax/heat_conduction.html">Heat conduction syntax</a></li></ul></nav><div class="modal modal-fixed-footer moose-search-modal" id="moose-search"><div class="modal-content container moose-search-modal-content"><div class="gcse-search"></div></div><div class="modal-footer"><a href="#!" class="modal-close btn-flat">Close</a></div></div></header><main class="main"><div class="container"><div class="row"><div class="moose-content col s12 m12 l12"><section id="b3bac55b-483b-4b04-a47b-6118ae44cc7c" data-section-level="1" data-section-text="Step 2 - Adding boundary conditions"><h1 id="step-2-adding-boundary-conditions">Step 2 - Adding boundary conditions</h1><p>In the previous step we set up a basic thermal simulation that did... nothing. In this step will prescribe values for the temperature on the left and right sides of the block.</p><pre class="moose-pre" style="max-height:350px;"><code class="language-text">#
+# Single block thermal input with boundary conditions
+# https://mooseframework.inl.gov/modules/heat_conduction/tutorials/introduction/therm_step02.html
+#
+
+[Mesh]
+  [generated]
+    type = GeneratedMeshGenerator
+    dim = 2
+    nx = 10
+    ny = 10
+    xmax = 2
+    ymax = 1
+  []
+[]
+
+[Variables]
+  [T]
+  []
+[]
+
+[Kernels]
+  [heat_conduction]
+    type = HeatConduction
+    variable = T
+  []
+[]
+
+[Materials]
+  [thermal]
+    type = HeatConductionMaterial
+    thermal_conductivity = 45.0
+  []
+[]
+
+[BCs]
+  [t_left]
+    type = DirichletBC
+    variable = T
+    value = 300
+    boundary = &#x27;left&#x27;
+  []
+  [t_right]
+    type = FunctionDirichletBC
+    variable = T
+    function = &#x27;300+5*t&#x27;
+    boundary = &#x27;right&#x27;
+  []
+[]
+
+[Executioner]
+  type = Transient
+  end_time = 5
+  dt = 1
+[]
+
+[Outputs]
+  exodus = true
+[]
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#8d7270b2-7d35-4396-a129-7e3e9ed6c3de">(moose/modules/heat_conduction/tutorials/introduction/therm_step02.i)</a><section id="94ccfcaa-e385-4ada-be73-2c99f9b5d104" data-section-level="2" data-section-text="Input file"><h2 id="input-file">Input file</h2><section id="4841f2e4-51b4-4b1e-8393-4fe66eaeab86" data-section-level="3" data-section-text="BCs"><h3><code>BCs</code></h3><p>BCs stands for <em>boundary conditions</em>. Those apply to the boundaries (or sidesets) of the simulation domain. In all boundary condition objects you will see the mandatory <code>boundary</code> parameter, which expects a list of sideset names or IDs.</p><pre class="moose-pre" style="max-height:350px;"><code class="language-text">[BCs]
+  [t_left]
+    type = DirichletBC
+    variable = T
+    value = 300
+    boundary = &#x27;left&#x27;
+  []
+  [t_right]
+    type = FunctionDirichletBC
+    variable = T
+    function = &#x27;300+5*t&#x27;
+    boundary = &#x27;right&#x27;
+  []
+[]
+</code></pre><a class="moose-source-filename tooltipped modal-trigger" href="#2f021481-d88f-472a-8619-cb795acceda5">(moose/modules/heat_conduction/tutorials/introduction/therm_step02.i)</a><section id="5904cac0-9534-4b5b-b4b5-21d701a09484" data-section-level="4" data-section-text="DirichletBC"><h4><code>DirichletBC</code></h4><p>The two Dirichlet boundary conditions are set on the <em>left</em> and <em>right</em> surfaces of the simulation domain. These prescribe the values of the <code>T</code> variable on those surfaces. The <code>GeneratedMeshGenerator</code> that was used to create this simple block mesh defines boundaries named <code>top</code>, <code>bottom</code>, <code>left</code>, and <code>right</code> on the boundaries of that block. Additional boundaries can be added using other MeshGenerators, or boundaries can be defined with an external meshing tool.</p><p>In this case, the temperature on the left boundary is fixed to a constant value of 300 using the <a href="../../../../source/bcs/DirichletBC.html"><code>DirichletBC</code></a> </p></section><section id="1844e427-c0aa-47d7-98e3-e8fcf8ad2965" data-section-level="4" data-section-text="FunctionDirichletBC"><h4><code>FunctionDirichletBC</code></h4><p>The temperature on the right boundary is defined using a time-dependent function using the <a href="../../../../source/bcs/FunctionDirichletBC.html"><code>FunctionDirichletBC</code></a>. As its name implies, this is a Dirichlet boundary condition that is defined using a function rather than a constant value. In this case, an expression for an analytic function is provided for the <code>function</code> parameter. Alternatively, the name of a separately defined <code>Function</code> can be provided. A wide variety of function types  <a href="supplemental02a.html">is available</a>.</p></section><section id="bdf8d688-34f4-4ef5-9b13-cc6468bcc191" data-section-level="4" data-section-text="Other boundary conditions"><h4 id="other-boundary-conditions">Other boundary conditions</h4><p>A number of <a href="supplemental02b.html">other boundary conditions</a> are available. Some of these are generic boundary conditions that can be applied to any problem, while some are physics-specific.</p></section></section><section id="d6d304d9-b597-4d90-9f10-5873d29ca8e4" data-section-level="2" data-section-text="Questions"><h2 id="questions">Questions</h2><p>Before running the model, consider what the expected solution to this problem with only the conduction term should be.</p><p><a href="answer02a.html">Click here for the answer.</a></p><p>Now go ahead and run the input and visualize the result to see if it matches the behavior you would expect.</p><section id="0b0bf5b1-7779-4d84-bdd6-468a428239e3" data-section-level="3" data-section-text="Exploring parameters"><h3 id="exploring-parameters">Exploring parameters</h3><p>Experiment with different settings for the thermal conductivity of the material and the applied boundary conditions. What happens if you change the thermal conductivity?</p><p><a href="answer02b.html">Click here for the answer.</a></p></section><section id="0648d048-377d-429b-b576-853b17112b8e" data-section-level="3" data-section-text="Sidebar :"><h3 id="sidebar">Sidebar:</h3><blockquote><p>For a problem like this, it can be very helpful to plot out values of the solution sampled along a line.</p></blockquote><p><a href="therm_step02a.html">Click here for the sidebar on plotting along a line.</a></p><p>Once you&#x27;ve answered the questions and run this example we will move on to <a href="therm_step03.html">Step 3</a>, where additional terms will be added to the heat equation. </p></section></section></section></section><div class="moose-modal modal" id="8d7270b2-7d35-4396-a129-7e3e9ed6c3de"><div class="modal-content"><h4>(moose/modules/heat_conduction/tutorials/introduction/therm_step02.i)</h4><pre class="moose-pre"><code class="language-text">#
+# Single block thermal input with boundary conditions
+# https://mooseframework.inl.gov/modules/heat_conduction/tutorials/introduction/therm_step02.html
+#
+
+[Mesh]
+  [generated]
+    type = GeneratedMeshGenerator
+    dim = 2
+    nx = 10
+    ny = 10
+    xmax = 2
+    ymax = 1
+  []
+[]
+
+[Variables]
+  [T]
+  []
+[]
+
+[Kernels]
+  [heat_conduction]
+    type = HeatConduction
+    variable = T
+  []
+[]
+
+[Materials]
+  [thermal]
+    type = HeatConductionMaterial
+    thermal_conductivity = 45.0
+  []
+[]
+
+[BCs]
+  [t_left]
+    type = DirichletBC
+    variable = T
+    value = 300
+    boundary = &#x27;left&#x27;
+  []
+  [t_right]
+    type = FunctionDirichletBC
+    variable = T
+    function = &#x27;300+5*t&#x27;
+    boundary = &#x27;right&#x27;
+  []
+[]
+
+[Executioner]
+  type = Transient
+  end_time = 5
+  dt = 1
+[]
+
+[Outputs]
+  exodus = true
+[]
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div><div class="moose-modal modal" id="2f021481-d88f-472a-8619-cb795acceda5"><div class="modal-content"><h4>(moose/modules/heat_conduction/tutorials/introduction/therm_step02.i)</h4><pre class="moose-pre"><code class="language-text">#
+# Single block thermal input with boundary conditions
+# https://mooseframework.inl.gov/modules/heat_conduction/tutorials/introduction/therm_step02.html
+#
+
+[Mesh]
+  [generated]
+    type = GeneratedMeshGenerator
+    dim = 2
+    nx = 10
+    ny = 10
+    xmax = 2
+    ymax = 1
+  []
+[]
+
+[Variables]
+  [T]
+  []
+[]
+
+[Kernels]
+  [heat_conduction]
+    type = HeatConduction
+    variable = T
+  []
+[]
+
+[Materials]
+  [thermal]
+    type = HeatConductionMaterial
+    thermal_conductivity = 45.0
+  []
+[]
+
+[BCs]
+  [t_left]
+    type = DirichletBC
+    variable = T
+    value = 300
+    boundary = &#x27;left&#x27;
+  []
+  [t_right]
+    type = FunctionDirichletBC
+    variable = T
+    function = &#x27;300+5*t&#x27;
+    boundary = &#x27;right&#x27;
+  []
+[]
+
+[Executioner]
+  type = Transient
+  end_time = 5
+  dt = 1
+[]
+
+[Outputs]
+  exodus = true
+[]
+</code></pre></div><div class="modal-footer"><a class="modal-close btn-flat">Close</a></div></div></div></div></div></main></div></body><script type="text/javascript" src="../../../../contrib/materialize/materialize.min.js"></script><script type="text/javascript" src="../../../../contrib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="../../../../contrib/prism/prism.min.js"></script><script type="text/javascript" src="../../../../js/init.js"></script><script type="text/javascript" src="../../../../js/navigation.js"></script><script type="text/javascript" src="https://cse.google.com/cse.js?cx=008852834041008754713:g3ilnhhbbj9"></script><script type="text/javascript" src="../../../../js/sqa_moose.js"></script>
